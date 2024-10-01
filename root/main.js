@@ -4,8 +4,7 @@ import {Client, GatewayIntentBits} from 'discord.js';
 config()
 
 console.log(process.env.TOKEN)
-
-
+const TOKEN = process.env.TOKEN;
 
 const bot = new Client({ intents: [
   GatewayIntentBits.Guilds,
@@ -20,7 +19,7 @@ bot.on('ready', () => {
 bot.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === 'ping') {
+  if (interaction.commandName == 'ping') {
     await interaction.reply('Pong!');
   }
 });
@@ -32,4 +31,4 @@ const test = [
     },
 ];
 
-bot.login(process.env.TOKEN);
+bot.login(TOKEN);
