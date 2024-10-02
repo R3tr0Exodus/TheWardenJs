@@ -4,7 +4,6 @@
     "dotenv": "^16.4.5",
     "request": "^2.88.2"
   },
-  "type": "module",
   "devDependencies": {
     "eslint": "^9.11.1"
   },
