@@ -5,12 +5,12 @@ const { TOKEN } = require('./config.json');
 ;
 
 const bot = new Client({ intents: [
-  GatewayIntentBits.Guilds,
-  GatewayIntentBits.GuildMessages
+  GatewayIntentBits.Guilds
 ]
 });
 
 bot.commands = new Collection();
+
 
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
@@ -33,7 +33,7 @@ for (const folder of commandFolders) {
 bot.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
-  const command = interaction.bot.commands.get(interaction.commandName);
+  const command = bot.commands.get(interaction.commandName);
 
   if (!command) {
     console.error(`No command found matching ${interaction.commandName}`);
