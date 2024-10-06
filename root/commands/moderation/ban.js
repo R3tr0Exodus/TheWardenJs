@@ -9,15 +9,15 @@ module.exports = {
             .setDescription('choose a member to ban')
             .setRequired(true))
         .addStringOption(option =>
-            option.setName('reasons')
+            option.setName('reason')
             .setDescription('Give a reason')
             .setRequired(false)),
             
     async execute(interaction) {
         const memberToBan = interaction.options.getUser('member');
         const banMember = await interaction.guild.members.fetch(memberToBan.id);
-        let reason = interaction.options.getString('reasons')
-        const instigator = interaction.member.id;
+        let reason = interaction.options.getString('reason')
+        const instigator = interaction.member;
         if (!reason)
             reason = 'No reason specified';
         if (!memberToBan) 

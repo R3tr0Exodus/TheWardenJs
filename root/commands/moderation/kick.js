@@ -9,15 +9,15 @@ module.exports = {
             .setDescription('choose a member to kick')
             .setRequired(true))
         .addStringOption(option =>
-            option.setName('reasons')
+            option.setName('reason')
             .setDescription('Give a reason')
             .setRequired(false)),
             
     async execute(interaction) {
         const memberToKick = interaction.options.getUser('member');
-        const kickMember = await interaction.guild.members.fetch(memberTokick.id);
-        let reason = interaction.options.getString('reasons')
-        const instigator = interaction.member.id;
+        const kickMember = await interaction.guild.members.fetch(memberToKick.id);
+        let reason = interaction.options.getString('reason')
+        const instigator = interaction.member;
         if (!reason)
             reason = 'No reason specified';
         if (!memberToKick) 
@@ -32,7 +32,7 @@ module.exports = {
 
         const kickSuccess = new EmbedBuilder()
         .setColor('Green')
-        .setDescription(`:white_check_mark: ${memberTokick.tag} has been successfully kicked | Reason: ${reason} | Instigator: ${instigator}`)
+        .setDescription(`:white_check_mark: ${memberToKick.tag} has been successfully kicked | Reason: ${reason} | Instigator: ${instigator}`)
 
         const successfulKickPost = new EmbedBuilder()
         .setColor("Green")
@@ -44,7 +44,7 @@ module.exports = {
             {name: 'Instigator:', value: `${interaction.member.tag}`, inline: true},
             {name: 'time', value: `<t:${Math.floor(Date.now() / 1000) + 3600}:D>`})
 
-        await interaction.guild.kicks.create(kickMember, {reason}).catch(err => {
+        await kickMember.kick({reason}).catch(err => {
             return interaction.reply({content: 'cannot kick this user', ephemeral: true})
         });
 
