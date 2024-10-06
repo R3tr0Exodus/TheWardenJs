@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder} = require("discord.js");
-const { execute } = require("./kick");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -36,6 +35,6 @@ module.exports = {
             return await interaction.reply({content: 'You do not have the permission for this command', ephemeral: true})
 
 
-        
+
     }
 }
