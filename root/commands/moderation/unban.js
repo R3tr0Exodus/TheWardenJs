@@ -31,7 +31,8 @@ module.exports = {
 
         const unbanSuccess = new EmbedBuilder()
         .setColor('Green')
-        .setDescription(`:white_check_mark: ${memberToUnbanID.tag} has been successfully unbanned | Reason: ${reason} | Instigator: ${instigator}`)
+        .setDescription(`:white_check_mark: ${memberToUnbanID.tag} has been successfully unbanned | 
+            Reason: ${reason} | Instigator: ${instigator}`)
 
         const successfulUnbanPost = new EmbedBuilder()
         .setColor("Green")

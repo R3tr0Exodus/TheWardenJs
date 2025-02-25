@@ -32,7 +32,8 @@ module.exports = {
 
         const banSuccess = new EmbedBuilder()
         .setColor('Green')
-        .setDescription(`:white_check_mark: ${memberToBan.tag} has been successfully banned | Reason: ${reason} | Instigator: ${instigator}`)
+        .setDescription(`:white_check_mark: ${memberToBan.tag} has been successfully banned | 
+            Reason: ${reason} | Instigator: ${instigator}`)
 
         const successfulBanPost = new EmbedBuilder()
         .setColor("Green")
